@@ -98,9 +98,14 @@ export default async function ManageReview({ params }: { params: Promise<{ revie
                         </Badge>
                         <div className="flex-1 min-w-0">
                           <p className="text-sm font-medium">{reviewer.email}</p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
+                          <a
+                            href={reviewUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-xs text-blue-600 dark:text-blue-400 hover:underline truncate block"
+                          >
                             {reviewUrl}
-                          </p>
+                          </a>
                         </div>
                       </div>
                       <CopyLinkButton url={reviewUrl} />
