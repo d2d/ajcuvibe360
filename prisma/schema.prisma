@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Question {
+  id        Int      @id @default(autoincrement())
+  text      String
+  category  String
+  order     Int
+  createdAt DateTime @default(now())
+}
+
+model Review {
+  id         String     @id @default(uuid())
+  ownerName  String
+  ownerEmail String
+  revieweeName String
+  createdAt  DateTime   @default(now())
+  reviewers  Reviewer[]
+}
+
+enum ReviewerCategory {
+  SUBORDINATE
+  PEER
+  SUPERVISOR
+  OTHER
+}
+
+model Reviewer {
+  id        String           @id @default(uuid())
+  reviewId  String
+  review    Review           @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  name      String?
+  email     String?
+  category  ReviewerCategory
+  token     String           @unique
+  createdAt DateTime         @default(now())
+  response  Response?
+}
+
+model Response {
+  id         Int      @id @default(autoincrement())
+  reviewerId String   @unique
+  reviewer   Reviewer @relation(fields: [reviewerId], references: [id], onDelete: Cascade)
+  answers    String   // JSON string of answers
+  createdAt  DateTime @default(now())
+}
