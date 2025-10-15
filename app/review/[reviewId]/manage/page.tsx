@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CopyLinkButton } from './CopyLinkButton';
+import { AutoRefresh } from './AutoRefresh';
 
 const categoryColors = {
   SUBORDINATE: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
@@ -37,6 +38,7 @@ export default async function ManageReview({ params }: { params: Promise<{ revie
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 py-12">
+      <AutoRefresh intervalSeconds={30} />
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <Card className="mb-6">
