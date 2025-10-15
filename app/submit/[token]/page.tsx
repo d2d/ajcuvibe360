@@ -144,11 +144,26 @@ export default function SubmitReview() {
   if (hasSubmitted) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
-        <Card className="max-w-md">
-          <CardHeader>
-            <CardTitle>Already Submitted</CardTitle>
-            <CardDescription>
-              You have already submitted your feedback for this review. Thank you!
+        <Card className="w-full max-w-md mx-4">
+          <CardHeader className="text-center pb-8 pt-8">
+            <div className="mx-auto w-16 h-16 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center mb-4">
+              <svg
+                className="w-8 h-8 text-green-600 dark:text-green-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+            <CardTitle className="text-2xl mb-3">Already Submitted</CardTitle>
+            <CardDescription className="text-base leading-relaxed">
+              You have already submitted your feedback for this review. Thank you for your participation!
             </CardDescription>
           </CardHeader>
         </Card>
