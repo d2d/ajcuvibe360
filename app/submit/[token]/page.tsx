@@ -91,11 +91,6 @@ export default function SubmitReview() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!reviewerName.trim()) {
-      alert('Please enter your name');
-      return;
-    }
-
     // Validate that questions 1-17 have ratings
     const missingRatings = questions
       .filter((q) => q.order < 18)
